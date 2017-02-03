@@ -101,7 +101,7 @@ $strexit = get_string('exitactivity', 'scorm');
 
 $coursecontext = context_course::instance($course->id);
 
-if ($displaymode == 'popup') {
+if (true) {
     $PAGE->set_pagelayout('embedded');
 } else {
     $shortname = format_string($course->shortname, true, array('context' => $coursecontext));
@@ -239,7 +239,7 @@ if ($result->prerequisites) {
                                                        $name, $scorm->options,
                                                        $scorm->width, $scorm->height)));
         echo html_writer::tag('noscript', html_writer::tag('iframe', '', array('id' => 'main',
-                                'class' => 'scoframe', 'name' => 'main', 'src' => 'loadSCO.php?id='.$cm->id.$scoidstr.$modestr)));
+                                'class' => 'scoframe', 'name' => 'main', 'src' => 'loadSCO.php?id='.$cm->id.$scoidstr.$modestr,'onload' => 'resizeIframe(this)')));
     }
 } else {
     echo $OUTPUT->box(get_string('noprerequisites', 'scorm'));
